@@ -1,5 +1,11 @@
 # rspress-plugin-file-tree
 
+## 1.0.5
+
+### Patch Changes
+
+- fix(rspress-plugin-file-tree): correct file detection for multi-part extensions (#27)
+
 ## 1.0.4
 
 ### Patch Changes

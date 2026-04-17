@@ -1,5 +1,11 @@
 # rspress-plugin-katex
 
+## 1.0.1
+
+### Patch Changes
+
+- fix(katex): resolve ReferenceError require is not defined in ESM (#24)
+
 ## 1.0.0
 
 ### Major Changes
