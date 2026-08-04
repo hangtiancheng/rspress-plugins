@@ -1,16 +1,14 @@
 import { pluginLess } from '@rsbuild/plugin-less';
-import { defineConfig } from '@rslib/core';
+import { define } from 'rstack';
+import { pluginPublint } from 'rsbuild-plugin-publint';
 
-export default defineConfig({
+define.lib({
+  plugins: [pluginPublint(), pluginLess()],
   lib: [
     {
-      format: 'esm',
-      syntax: 'es2021',
-      autoExtension: true,
       bundle: true,
-      dts: {
-        bundle: true,
-      },
+      syntax: 'es2023',
+      dts: true,
       source: {
         entry: {
           'components/Back2Top': './src/components/Back2Top.tsx',
@@ -18,22 +16,14 @@ export default defineConfig({
       },
       output: {
         target: 'web',
-        externals: {
-          react: 'module react',
-          'react/jsx-runtime': 'module react/jsx-runtime',
-          'react-dom': 'module react-dom',
-        },
+        autoExternal: true,
+        externals: ['react', 'react-dom', 'react/jsx-runtime'],
       },
-      plugins: [pluginLess()],
     },
     {
-      format: 'esm',
-      syntax: 'es2021',
-      autoExtension: true,
       bundle: true,
-      dts: {
-        bundle: true,
-      },
+      syntax: 'es2023',
+      dts: true,
       source: {
         entry: {
           index: './src/index.ts',
@@ -41,6 +31,7 @@ export default defineConfig({
       },
       output: {
         target: 'node',
+        autoExternal: true,
       },
       shims: {
         esm: {
@@ -50,3 +41,5 @@ export default defineConfig({
     },
   ],
 });
+
+define.doc(async () => (await import('./rspress.config.ts')).default);
