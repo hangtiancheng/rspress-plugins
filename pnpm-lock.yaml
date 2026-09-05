@@ -394,9 +394,6 @@ importers:
       '@types/react':
         specifier: 'catalog:'
         version: 18.3.31
-      rspress-plugin-mermaid:
-        specifier: workspace:*
-        version: 'link:'
       typescript:
         specifier: 'catalog:'
         version: 6.0.3

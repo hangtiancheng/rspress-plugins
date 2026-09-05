@@ -48,7 +48,6 @@
     "@rspress/core": "catalog:",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
-    "rspress-plugin-mermaid": "workspace:*",
     "typescript": "catalog:"
   },
   "peerDependencies": {
