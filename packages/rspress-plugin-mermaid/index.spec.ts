@@ -22,9 +22,9 @@ describe('rspress-plugin-mermaid', () => {
     await expect(diagram).toContainText('Go shopping');
   });
 
-  // Covers the module-level render queue: two renderer instances mount at the
-  // same time and must both produce correct output despite mermaid's shared
-  // global render state.
+  // Covers concurrent renders: two renderer instances mount at the same time;
+  // mermaid's internal render queue serializes them and both must produce
+  // correct output.
   test('renders multiple diagrams concurrently', async ({ page }) => {
     await page.goto(pageUrl());
 
@@ -58,8 +58,8 @@ describe('rspress-plugin-mermaid', () => {
       .not.toBe(lightMarkup);
   });
 
-  // Covers the error path: an invalid diagram renders nothing without
-  // poisoning the shared render queue.
+  // Covers the error path: an invalid diagram renders nothing and valid
+  // diagrams keep rendering.
   test('skips invalid diagrams without breaking valid ones', async ({
     page,
   }) => {
